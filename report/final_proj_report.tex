@@ -1,0 +1,147 @@
+\documentclass{article} % Changed document class to 'article'
+
+\usepackage{graphicx} % Added package for including graphics
+\usepackage{booktabs} % Added package for better table formatting
+
+\title{Exploration and Modeling of Win Streak Performances in the NBA}
+\author{Nicholas DeRobertis, Sagar Patel, Hari Patel, Sarang Hadagali}
+\date{April 24, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+A dataset of NBA game records was utilized to forecast team win streaks based on various factors such as team performance metrics, player statistics, and game outcomes. Modeling techniques involved employing both a Random Forest classifier and a Support Vector Machine (CAN CHANGE THIS LATER).
+
+\section{Data Preprocessing}
+
+Initial data features columns including annual and hourly rates, ethnicity, age, sex, job group, first job, and education level. Columns like employee id, termination year, job code, and referral source were removed because they had missing data or unnecessary data for the classification. Status, whether the individual is active or terminated, was selected as the target column and factorized.
+
+\begin{table}[h]
+    \centering
+    \caption{Data before Processing}
+    \label{tab:before_processing}
+    \begin{tabular}{ll}
+        \toprule
+        Feature & Value \\
+        \midrule
+        % Add your data here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Factorization}
+
+Features with a wide range or categorical data needed to be factorized. Annual rate was split based on \$20,000, \$50,000, \$75,000, \$100,000, and \$2,000,000. Hourly rate was split based on \$25, \$50, \$75, \$100, and \$1000. Age was split based on 20, 30, 40, 50, 60, 100. Hire month was split into quarters of a year, Q1, Q2, Q3, and Q4. Ethnicity, sex, marital status, number of teams, first job, travel requirements, disabled, veteran, job group, and education were factorized.
+
+\begin{table}[h]
+    \centering
+    \caption{Data after Processing}
+    \label{tab:after_processing}
+    \begin{tabular}{ll}
+        \toprule
+        Feature & Value \\
+        \midrule
+        % Add your data here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Exploration of Data}
+
+There were 21 total number of features with 9612 rows of data. Examining the correlations between the different features with their affect on the status of the employee.
+
+\begin{table}[h]
+    \centering
+    \caption{Feature Correlation}
+    \label{tab:feature_correlation}
+    \begin{tabular}{ll}
+        \toprule
+        Feature 1 & Feature 2 \\
+        \midrule
+        % Add your data here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Modeling}
+
+\subsection{Feature Selection}
+
+Feature selection was performed using Recursive Feature Elimination with a logistic regression model. The following 10 features were selected by the algorithm.
+
+\begin{table}[h]
+    \centering
+    \caption{Feature Selection}
+    \label{tab:feature_selection}
+    \begin{tabular}{ll}
+        \toprule
+        Selected Features \\
+        \midrule
+        % Add your selected features here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Training Test Split}
+
+The data was split into 70\% training and 30\% test subsets.
+
+\subsection{Random Forest}
+
+Random Forest classification was performed on the training data and the model was used to predict the test data for accuracy comparison. The classification report for the Random Forest model.
+
+\begin{table}[h]
+    \centering
+    \caption{RF Classification Report}
+    \label{tab:rf_classification_report}
+    \begin{tabular}{ll}
+        \toprule
+        Metric & Value \\
+        \midrule
+        % Add your classification report here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Support Vector Machine}
+
+Support Vector Machine classification was performed on the training data and the model was used to predict the test data for accuracy comparison. The classification report for the SVM model.
+
+\begin{table}[h]
+    \centering
+    \caption{SVM Classification Report}
+    \label{tab:svm_classification_report}
+    \begin{tabular}{ll}
+        \toprule
+        Metric & Value \\
+        \midrule
+        % Add your classification report here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Model Accuracy}
+
+The accuracy score of the models was performed based on their predictions of the test data.
+
+\begin{table}[h]
+    \centering
+    \caption{Model Accuracy}
+    \label{tab:model_accuracy}
+    \begin{tabular}{ll}
+        \toprule
+        Model & Accuracy \\
+        \midrule
+        % Add your accuracy scores here
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Conclusion}
+
+Random Forest classification and Support Vector Machine were used to predict the attrition of employees based on features in a dataset. The SVM performed better than the RF classifier.
+
+\end{document}

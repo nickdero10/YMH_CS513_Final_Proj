@@ -1,0 +1,4 @@
+data/test.csv
+data/clean_data.csv
+venv/
+.DS_Store
